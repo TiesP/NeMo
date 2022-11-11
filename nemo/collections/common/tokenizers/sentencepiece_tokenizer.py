@@ -374,7 +374,7 @@ def create_spt_model(
     # Add BERT control symbols
     tokens = []
 
-    with open(f"{output_dir}/tokenizer.vocab", "r") as f:
+    with open(f"{output_dir}/tokenizer.vocab", "r", encoding='utf8') as f:
         # Read tokens from each line and parse for vocab
         for line in f:
             piece = line.split("\t")[0]
@@ -392,7 +392,7 @@ def create_spt_model(
 
     # Save vocabulary to output file
     vocab_file = f'{output_dir}/vocab.txt'
-    with open(vocab_file, "w") as f:
+    with open(vocab_file, "w", encoding='utf8') as f:
         for token in vocab:
             f.write(f"{token}\n")
     return f'{output_dir}/tokenizer.model', vocab_file
